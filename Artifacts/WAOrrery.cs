@@ -15,6 +15,7 @@
                 count -= 1;
             }
             while (count > 0);
+            this.Pulse();
         }
     }
 }

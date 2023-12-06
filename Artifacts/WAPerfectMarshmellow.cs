@@ -4,10 +4,6 @@
     public class WAPerfectMarshmellow : Artifact
     {
         public override string Name() => "PERFECT MARSHMELLOW";
-        public override void OnReceiveArtifact(State state)
-        {
-            state.ship.shieldMaxBase += 1;
-        }
         public override void OnTurnStart(State state, Combat combat)
         {
             Ship ship = state.ship;

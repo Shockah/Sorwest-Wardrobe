@@ -84,6 +84,17 @@ namespace Wardrobe
             var amount = s.ship.Get(status);
             if (amount <= 0)
                 return;
+            var cardHasAttacks = false;
+            foreach (CardAction cardAction in card.GetActionsOverridden(s, __instance))
+            {
+                if (cardAction is AAttack && !cardHasAttacks)
+                {
+                    cardHasAttacks = true;
+                    break;
+                }
+            }
+            if (!cardHasAttacks)
+                return;
             foreach (CardAction cardAction in card.GetActionsOverridden(s, __instance))
             {
                 if (!(cardAction is AEndTurn))

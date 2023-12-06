@@ -309,7 +309,7 @@ namespace Wardrobe
                             WARunicDomeSprite ?? throw new Exception("missing WARunicDome artifact sprite"));
 
                     WARunicDome.AddLocalisation("RUNIC DOME",
-                         "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=hurt>You can no longer see enemy intents</c>.");
+                         "Gain 1 extra <c=energy>ENERGY</c> every turn. <c=hurt>You can no longer see enemy info</c>.");
 
                     registry.RegisterArtifact(WARunicDome);
                 }
