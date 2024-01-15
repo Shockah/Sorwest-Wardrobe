@@ -360,5 +360,15 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/References/CobaltCore.dll
+**/CobaltCore.dll
+*/CobaltCore.dll
 /References/0Harmony.dll
+*/release/*
+**/release/**
+*/.release/*
+**/.release/**
+**/.vs/**
+**/.git/**
+**/bin/**
+**/obj/**
+**/.bin/**

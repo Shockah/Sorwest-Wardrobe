@@ -1,0 +1,14 @@
+{
+  "EntryPointAssembly": "Wardrobe.dll",
+  "UniqueName": "Sorwest.Wardrobe",
+  "Version": "1.2.0",
+  "RequiredApiVersion": "0.1.0",
+  "Dependencies": [
+    {
+      "UniqueName": "Nickel.Legacy",
+      "Version": "0.3.0",
+      "IsRequired": true
+    }
+  ],
+  "ModType": "Nickel.Legacy"
+}

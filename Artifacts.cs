@@ -378,7 +378,7 @@ namespace Wardrobe
         private void DomeRenderLogic(Harmony harmony)
         {
             {
-                MethodInfo method1 = typeof(Combat).GetMethod("ShouldDrawEnemyUI", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Instance) ?? throw new Exception("Couldn't find Combat.ShouldDrawEnemyUI method");
+                MethodInfo method1 = typeof(Combat).GetMethod("ShouldDrawEnemyUI", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Public | System.Reflection.BindingFlags.Instance) ?? throw new Exception("Couldn't find Combat.ShouldDrawEnemyUI method");
                 MethodInfo method2 = typeof(Manifest).GetMethod("DomeHideIntent", System.Reflection.BindingFlags.Static | System.Reflection.BindingFlags.NonPublic) ?? throw new Exception("Couldn't find Manifest.DomeHideIntent method");
                 harmony.Patch(method1, prefix: new HarmonyMethod(method2));
             }
@@ -420,7 +420,7 @@ namespace Wardrobe
         {
             State state = g.state;
             var artifact = state.EnumerateAllArtifacts().OfType<WARunicDome>().FirstOrDefault();
-            if (artifact is null)
+            if (!(artifact is null))
                 return true;
             return false;
         }
@@ -494,8 +494,6 @@ namespace Wardrobe
                     randomRarity = Mutil.Roll<Rarity>(s.rngCardOfferings.Next(), (0.65, Rarity.common), (0.2, Rarity.uncommon), (0.15, Rarity.rare));
                     break;
             }
-            if (randomRarity == Rarity.rare)
-                artifact.Pulse();
             rarityOverride = randomRarity;
             return true;
         }
