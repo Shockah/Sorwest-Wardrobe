@@ -2,6 +2,7 @@
 using CobaltCoreModding.Definitions.ExternalItems;
 using CobaltCoreModding.Definitions.ModContactPoints;
 using HarmonyLib;
+using Wardrobe.Actions;
 using Wardrobe.Artifacts;
 
 namespace Wardrobe
@@ -439,13 +440,7 @@ namespace Wardrobe
                     {
                         label = "Lift (Girya)",
                         key = ".shopUpgradeCard",
-                        actions =
-                    {
-                        new ADelegateAction((_, state, _) => {
-                            artifact1.counter++;
-                            artifact1.Pulse();
-                        })
-                    }
+                        actions = [new GiryaLiftAction()]
                     });
                 }
             }
