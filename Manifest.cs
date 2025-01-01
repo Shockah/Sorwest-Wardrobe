@@ -8,13 +8,17 @@ namespace Wardrobe
 {
     public partial class Manifest :
         ISpriteManifest,
-        IManifest,
         IArtifactManifest,
         ICardManifest,
         IStatusManifest,
-        IGlossaryManifest
+        IGlossaryManifest,
+        IPrelaunchManifest
     {
+        internal static Manifest Instance = null!;
+        internal IMoreDifficultiesApi? MoreDifficultiesApi;
+        
         public string Name => "Sorwest.Wardrobe";
+
         public static System.Drawing.Color Wardrobe_Primary_Color = System.Drawing.Color.FromArgb(255, 255, 255);
         public IEnumerable<DependencyEntry> Dependencies => new DependencyEntry[]
             {
@@ -300,6 +304,12 @@ namespace Wardrobe
             AConfusedStatus_Glossary = new ExternalGlossary("Wardrobe.Glossary.AConfusedStatus_Glossary", "ConfusedStatusGlossary", false, ExternalGlossary.GlossayType.action, ConfusedStatusSprite ?? throw new Exception("Missing ConfusedStatusSprite"));
             AConfusedStatus_Glossary.AddLocalisation("en", "Confused", "The costs of your cards are randomized on draw, from 0 to 3.", null);
             registry.RegisterGlossary(AConfusedStatus_Glossary);
+        }
+        
+        void IPrelaunchManifest.FinalizePreperations(IPrelaunchContactPoint prelaunchManifest)
+        {
+            Instance = this;
+            MoreDifficultiesApi = prelaunchManifest.GetApi<IMoreDifficultiesApi>("TheJazMaster.MoreDifficulties");
         }
     }
 }
